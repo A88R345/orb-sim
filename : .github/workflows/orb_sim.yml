@@ -1,0 +1,35 @@
+name: ORB SHORT T2 - Simulation de signaux
+
+on:
+  schedule:
+    - cron: "0,15,30,45 13-19 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  run-signal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dependances
+        run: pip install -r requirements.txt
+
+      - name: Lancer le script de signal
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python run_orb_sim.py
+
+      - name: Commiter le CSV mis a jour
+        run: |
+          git config user.name "orb-sim-bot"
+          git config user.email "actions@github.com"
+          git add data/trades_sim.csv
+          git diff --staged --quiet || git commit -m "Update trades_sim.csv [auto]"
+          git push
