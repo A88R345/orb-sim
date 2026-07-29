@@ -2,8 +2,11 @@ name: ORB SHORT T2 - Simulation de signaux
 
 on:
   schedule:
+    # Toutes les 15 min de 13h00 a 19h45 UTC, du lundi au vendredi.
+    # (13h30-14h00 UTC = Opening Range, 14h00-17h00 UTC = fenetre d'entree,
+    #  19h30 UTC = flat oblige. Le buffer avant/apres est volontaire.)
     - cron: "0,15,30,45 13-19 * * 1-5"
-  workflow_dispatch: {}
+  workflow_dispatch: {}   # permet de lancer manuellement depuis l'onglet Actions pour tester
 
 permissions:
   contents: write
