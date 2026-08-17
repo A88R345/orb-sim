@@ -1,1 +1,2 @@
-date,trade_id,direction,entry_time,entry_price,sl,tp,or_low,or_high,bias_slope,exit_time,exit_price,exit_reason,pnl_pts,pnl_usd
+date,trade_id,direction,entry_time,entry_price,sl,tp,or_low,or_high,bias_slope,exit_time,exit_price,exit_reason,pnl_pts,pnl_usd,contracts
+2026-08-17,T1,SHORT,2026-08-17 14:00:00+00:00,30164.5,30184.6,30104.2,30165.5,30266.0,-11.6005,2026-08-17 14:15:00+00:00,30184.6,SL,-20.1,-488.4,12.0
